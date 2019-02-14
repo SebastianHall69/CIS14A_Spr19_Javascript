@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Celsius to Fahrenheit converter A1P4</title>
+</head>
+<body style="background-color:honeydew">
+    <h1>A1P4 Temperature Converter</h1>
+    <p>Formula for conversion: °F = °C * 9 / 5 + 32</p>
+    
+    <script type="text/javascript">
+        //Declare variables
+        var c, f;//Degrees Celsius and Fahrenheit
+        var output;//Output string
+
+        //Get user input for temp
+        c = window.prompt('Enter a temperature in Celsius to convert to Fahrenheit');
+        
+        //Convert Celsius to Fahrenheit
+        f = c * 9 / 5 + 32;
+
+        //Make output string
+        output = c + "°C is equal to " + f + "°F! ";
+        if(f <= 32) {
+            output += "And that is freezing cold!";
+        }
+        //Output results
+        setTimeout("window.alert(output)",50);
+    </script>
+</body>
+</html>
