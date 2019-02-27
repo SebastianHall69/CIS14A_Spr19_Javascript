@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Sebastian Hall A2P1</title>
+    <style>
+        body {
+            background-color:aquamarine;
+        }
+    </style>
+</head>
+    
+<body>
+    <h1>Sebastian Hall A2P1</h1>
+    
+    <script>
+        //Declare variables
+        var fName;//First name
+        var gpa;//GPA
+        var grade;//Final grade
+        var output;//Output string for name and grade
+
+        //Prompt user for first name
+        fName = window.prompt("Enter your first name");
+        fName = fName.trim();//Remove unnecessary whitespace if necessary
+
+        //Prompt user for GPA
+        gpa = window.prompt("Enter your GPA, " + fName);
+        gpa = parseFloat(gpa);//Convert type from string to float
+
+        //Determine grade based on GPA
+        if(!isNaN(gpa)) {
+            grade = getGrade(gpa);
+        } else {
+            grade = "F because a GPA is a number";
+        }
+
+        //Output grade and name
+        output = "<p>" + fName + ", your GPA of " + gpa + " results in a " + 
+                 grade + " grade.</p>";
+        document.write(output);
+    
+        
+        function getGrade(gpa) {
+            //Declare variables
+            var grade;//Letter grade
+            
+            //Determine grade based on GPA
+            if(gpa >= 3.7) {
+                grade = "A";
+            } else if(gpa >= 2.7) {
+                grade = "B";
+            } else if(gpa >= 1.7) {
+                grade = "C";
+            } else if(gpa >= 0.7) {
+                grade = "D";
+            } else {
+                grade = "F";
+            }
+            
+            //Return the grade
+            return grade;
+        }
+    </script>
+</body>
+    
+</html>
