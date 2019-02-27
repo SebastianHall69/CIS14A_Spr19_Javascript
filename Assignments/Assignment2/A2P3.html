@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Sebastian Hall A2P2</title>
+    <title>Sebastian Hall A2P3</title>
     <style>
         body {
             background-color:lightcyan;
@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    <h1>A2P2 Rat Store</h1>
+    <h1>A2P3 Rat Store</h1>
     <p>For all your rat needs</p>
     <p>This months specials:</p>
     
@@ -50,12 +50,14 @@
             var fName;//First name
             var amounts = [];//Array of order amounts
             var order = "";//Final order summary message
+            var ttlOne;
+            var ttlTwo;
 
             //Prompt user to enter name
             fName = window.prompt("Welcome to the Rat Store. What is your name?");
 
             //Prompt user to buy product one
-            amounts[0] = window.prompt(fName + ", how many Large Rats " + 
+            amounts[0] = window.prompt(fName + ", how many Big Rats " + 
                                     "would you like to buy?");
 
             //Prompt user to buy product two
@@ -63,9 +65,17 @@
                                     "would you like to buy?");
 
             //Set information into order summary part of page
-            order = (amounts[0] + " Large Rats and " + amounts[1] + 
+            order = (amounts[0] + " Big Rats and " + amounts[1] + 
                      " Small Rats were ordered by " + fName);
+            //Get totals and output
+            ttlOne = amounts[0] * 15;
+            ttlTwo = amounts[1] * 10;
+            order += "<p>" + amounts[0] + "@ $15 each: $" + ttlOne + "</p>";
+            order += "<p>" + amounts[1] + "@ $10 each: $" + ttlTwo + "</p>";
+            order += "<p>Grand total for order: $" + (ttlTwo + ttlOne) + "</p>";
             document.getElementById("prodSum").innerHTML = order;
+            
+            
         }
         window.onload = stuff;
     </script>
