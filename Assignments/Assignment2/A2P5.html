@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Sebastian Hall A2P5</title>
+    <style>
+        body {
+            background-color:lightcyan;
+        }
+        p.prodName {
+            font-weight: bold;
+        }
+        img.prodImg {
+            width: 200px;
+        }
+        div#prodSum {
+            float: left;
+            text-align: right;
+        }
+    </style>
+    <script>
+        //Global variables
+        const NUM_PROD = 2;//Number of products available
+        const TAX_RATE = 0.08;//8% tax on products
+        var products = ["Big Rat", "Small Rat"];//Contains product names
+        var prodPrc = [15.99, 10.99];//Product prices
+        
+        function stuff() {
+            //Declare variables
+            var fName;//First name
+            var amounts = [];//Array of order amounts
+            var prodTtl = [];//Total of each product bought
+            var subTtl = 0;//Subtotal on order
+
+            //Prompt user to enter name
+            fName = window.prompt("Welcome to the Rat Store. What is your name?");
+
+            //Prompt user to buy products and calculate totals
+            for(var i = 0; i < NUM_PROD; ++i) {
+                amounts[i] = window.prompt(fName + ", how many " + products[i] + 
+                                          " would you like to purchase?");
+                //Check for non numerical and negative amounts
+                if(isNaN(amounts[i]) || amounts[i] < 0) {
+                    window.alert("Your order for " + products[i] + " could not be placed");
+                } else {
+                    //Calculate total
+                    amounts[i] = parseInt(amounts[i]);
+                    prodTtl[i] = prodPrc[i] * amounts[i];
+                    subTtl += prodTtl[i];   
+                }
+            }
+            
+            //Print reciept
+            reciept(amounts, products, prodPrc, prodTtl, subTtl);
+        }
+        
+        function reciept(amounts, products, prodPrc, prodTtl, subTtl) {
+            var taxAmt = 0;//Amount of tax on the order
+            var output = "";//Output string
+            
+            //Append to output string
+            for(var i = 0; i < NUM_PROD; ++i){
+                if(amounts[i] > 0) {//If an amount was selected
+                    output += "<p>" + amounts[i] + " " + products[i] + "(s) at $" + prodPrc[i].toFixed(2) + ": $" + prodTtl[i].toFixed(2) + "</p>";
+                }
+            }
+            
+            //Add subtotal, tax, and total to order
+            taxAmt = subTtl * TAX_RATE;//Calculate tax
+            output += "<p>Subtotal: $" + subTtl.toFixed(2) + "</p>";
+            output += "<p>Tax amount: $" + taxAmt.toFixed(2) + "</p>";
+            output += "<p>Order total: $" + (subTtl + taxAmt).toFixed(2) + "</p>";
+            
+            //Output order to summary section of page
+            document.getElementById("prodSum").innerHTML = 
+                "<h2>Reciept Summary</h2>" + output;
+        }
+        window.onload = stuff;
+    </script>
+</head>
+
+<body>
+    <!--Store title-->
+    <h1>A2P5 Rat Store</h1>
+    <p>For all your rat needs</p>
+    <p>This months specials:</p>
+    
+    <!--Table of products-->
+    <table border="1" cellspacing="0" cellpadding="6" 
+           summary="Table of product images and prices and descriptions">
+        <tbody>
+            <tr>
+                <td><img src="bigRat.jpg" alt="Big Rat" class="prodImg" /></td>
+                <td>
+                    <p class="prodName">$15.99 Big Rat</p>
+                    <p>Healthy large furry rodent</p>
+                </td>
+            </tr>
+            <tr>
+                <td><img src="smallRat.jpg" alt="Small Rat" class="prodImg"/></td>
+                <td>
+                    <p class="prodName">$10.99 Small Rat</p>
+                    <p>Small furry rodent for price conscientious buyers</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <!--Reciept Area-->
+    <div id="prodSum"></div>
+    
+    
+</body>
+
+</html>
