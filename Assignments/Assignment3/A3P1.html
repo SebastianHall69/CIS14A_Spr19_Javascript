@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>A3P1 by Sebastian Hall</title>
+    <style>
+        body {
+            background-color:lightcyan;
+        }
+        p.prodName {
+            font-weight: bold;
+        }
+        img.prodImg {
+            width: 200px;
+        }
+        div#prodSum {
+            float: left;
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>A3P1 The Rat Store</h1>
+    <p>A place for all your rat needs</p>
+    <p>This months specials:</p>
+    <form>
+        <table border="1" cellspacing="0" cellpadding="6" summary="Table of product images, prices & descriptions">
+            <tbody>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>Please enter your name:<br><input type="text" id="txtName" name="txtName">
+                    </td>
+                </tr>
+                <tr>
+                    <td><img class="prodImg" src="bigRat.jpg" alt="Big Rat" /></td>
+                    <td>
+                        <p class="prodName">$15.99 Big Rat </p>
+                        <p>A big furry rodent well suited for a variety of purposes</p>
+                    </td>
+                    <td>Quantity:<br><input type="text" id="txtQ1" name="txtQ1"></td>
+                </tr>
+                <tr>
+                    <td><img class="prodImg" src="smallRat.jpg" alt="Small Rat" /></td>
+                    <td>
+                        <p class="prodName">$7.99 Small Rat</p>
+                        <p>A small furry rodent for those with a limited budget, limited use</p>
+                    </td>
+                    <td>Quantity:<br><input type="text" id="txtQ2" name="txtQ2"></td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            <input type="button" value="Process Order" id="btnProcess" onClick="EVENT CODE HERE">
+        </p>
+
+    </form>
+    <div id="receipt">&nbsp;</div>
+</body>
+    
+    <script>
+        
+    </script>
+
+</html>
