@@ -19,6 +19,19 @@
             text-align: right;
         }
     </style>
+    <script>
+        const PRICE_BR = 15.99;
+        const PRICE_SR = 7.99;
+        
+        function processOrder() {
+            var fName = document.getElementById("txtName").value;
+            var q1 = document.getElementById("txtQ1").value;
+            var q2 = document.getElementById("txtQ2").value;
+            var output = "<p>" + fName + ", thank you for your order of " + 
+                q1 + " Big Rats and " + q2 + " Small Rats!";
+            document.getElementById("receipt").innerHTML = output;
+        }
+    </script>
 </head>
 
 <body>
@@ -37,7 +50,7 @@
                 <tr>
                     <td><img class="prodImg" src="bigRat.jpg" alt="Big Rat" /></td>
                     <td>
-                        <p class="prodName">$15.99 Big Rat </p>
+                        <p class="prodName">$<script>document.write(PRICE_BR)</script> Big Rat </p>
                         <p>A big furry rodent well suited for a variety of purposes</p>
                     </td>
                     <td>Quantity:<br><input type="text" id="txtQ1" name="txtQ1"></td>
@@ -45,7 +58,7 @@
                 <tr>
                     <td><img class="prodImg" src="smallRat.jpg" alt="Small Rat" /></td>
                     <td>
-                        <p class="prodName">$7.99 Small Rat</p>
+                        <p class="prodName">$<script>document.write(PRICE_SR)</script> Small Rat</p>
                         <p>A small furry rodent for those with a limited budget, limited use</p>
                     </td>
                     <td>Quantity:<br><input type="text" id="txtQ2" name="txtQ2"></td>
@@ -53,7 +66,7 @@
             </tbody>
         </table>
         <p>
-            <input type="button" value="Process Order" id="btnProcess" onClick="document.getElementById('receipt').innerHTML = document.getElementById('txtName').value + ', thank you for your order!';">
+            <input type="button" value="Process Order" id="btnProcess" onClick="processOrder();">
         </p>
 
     </form>
