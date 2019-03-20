@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Sebastian Hall A2P2</title>
+    <style>
+        body {
+            background-color:lightcyan;
+        }
+        p.prodName {
+            font-weight: bold;
+        }
+        img.prodImg {
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>A2P2 Rat Store</h1>
+    <p>For all your rat needs</p>
+    <p>This months specials:</p>
+    
+    <table border="1" cellspacing="0" cellpadding="6" 
+           summary="Table of product images and prices and descriptions">
+        <tbody>
+            <tr>
+                <td><img src="bigRat.jpg" alt="Big Rat" class="prodImg" /></td>
+                <td>
+                    <p class="prodName">$15 Big Rat</p>
+                    <p>Healthy large furry rodent</p>
+                </td>
+            </tr>
+            <tr>
+                <td><img src="smallRat.jpg" alt="Small Rat" class="prodImg"/></td>
+                <td>
+                    <p class="prodName">$7 Small Rat</p>
+                    <p>Small furry rodent for price conscientious buyers</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h2 id="prodSum"></h2>
+    
+    <script>
+        function stuff() {
+            //Declare variables
+            var fName;//First name
+            var amounts = [];//Array of order amounts
+            var receipt = "";//Final order summary message
+            var min = 0;//Minimum amount to be ordered
+            var max = 1000;//Maximum amount to be ordered
+
+            //Prompt user to enter name
+            fName = window.prompt("Welcome to the Rat Store. What is your name?");
+
+            //Prompt user to buy product one
+            amounts[0] = order("Large Rats", min, max);
+
+            //Prompt user to buy product two
+            amounts[1] = order("Small Rats", min, max);
+
+            //Set information into order summary part of page
+            receipt = (amounts[0] + " Large Rats and " + amounts[1] + 
+                     " Small Rats were ordered by " + fName);
+            document.getElementById("prodSum").innerHTML = receipt;
+        }
+       
+        function order(product, min, max) {
+            //Gather input
+            var input = window.prompt("How many " + product + " would you like to buy?");
+            var amount = parseInt(input);
+            
+            //Validate input
+            while(isNaN(amount) || !isInBounds(amount, min, max)) {
+                input = window.prompt("Sorry, " + input + " is not a valid amount\n" + 
+                                      "Please Enter a valid number range [" + min +"," 
+                                      + max + "]");
+                amount = parseInt(input);
+            }
+            //Return amount ordered
+            return amount;
+        }
+        
+        function isInBounds(amount, min, max) {
+            var status = (amount >= min && amount <= max)?true:false;
+            return status;
+        }
+        window.onload = stuff;
+    </script>
+</body>
+
+</html>
