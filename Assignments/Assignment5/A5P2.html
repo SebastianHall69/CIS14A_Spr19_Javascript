@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>A5P1 by Sebastian Hall</title>
+    <style>
+        body {
+            background-color:lightcyan;
+        }
+        p.prodName {
+            font-weight: bold;
+        }
+        img.prodImg {
+            width: 200px;
+        }
+        div#prodSum {
+            float: left;
+            text-align: right;
+        }
+        #discTable {
+            text-align: right;
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        #discTable tr:nth-child(odd) {
+            background-color: lightgrey;
+        }
+        #discTable tr:nth-child(even) {
+            background-color: lightslategrey;
+        }
+        #discTable td, th {
+            border: 2px solid black;
+        }
+        caption {
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        const PRICE_BR = 16;//Price of Big Rat
+        const PRICE_SR = 8;//Price of Small Rat
+        const TAXRATE = 0.08;//Taxrate of 8
+        var discounts = [0.95, 0.93, 0.9, 0.88, 0.85, 0.8];
+        var quantities = [10, 50, 100, 200, 500, 1000];
+        
+        function processOrder() {
+            var fName = document.getElementById("txtName").value;
+            var q1 = document.getElementById("txtQ1").value;
+            var q2 = document.getElementById("txtQ2").value;
+            disc = getDisc(q1);
+            var sub1 = q1 * PRICE_BR;
+            var sub2 = q2 * PRICE_SR;
+            var subtotal = sub1 + sub2;
+            var tax = subtotal * TAXRATE;
+            var total = subtotal + tax;
+            var output = "<p>" + fName + ", thank you for your order of " + 
+                q1 + " Big Rats and " + q2 + " Small Rats!</p>";
+            output += "<p>" + q1 + " Big Rat(s) @ $" + PRICE_BR + " = $";
+            if(q1>=10) {
+                sub1 *= disc;
+                 output += sub1.toFixed(2) + "**Discount Applied</p>";
+            } else {
+                output += sub1.toFixed(2) + "</p>";
+            }
+            output += "<p>" + q2 + " Small Rat(s) @ $" + PRICE_SR + " = $" + 
+                sub2.toFixed(2) + "</p>";
+            output +="<p>Subtotal: $" + subtotal.toFixed(2) + "</p>";
+            output +="<p>Tax: $" + tax.toFixed(2) + "</p>";
+            output += "<p>Total Balance: $" + total.toFixed(2) + "</p>";
+            
+            document.getElementById("receipt").innerHTML = output;
+        }
+        function displayDiscounts() {
+            var output = "<table id='discTable'><caption>Quantity Discount Pricing On Big Rats</caption><tbody><tr><th>Quantity</th><th>Normal Pricing</th><th>Discount Pricing</th></tr>";
+            for(var i = 0; i < quantities.length; ++i) {
+                var price = quantities[i] * PRICE_BR;
+                output += "<tr><td>" + quantities[i] + "</td>";
+                output += "<td>" + price.toFixed(2) + "</td>";
+                output += "<td>" + (price * discounts[i]).toFixed(2) + "</td></tr>";
+            }
+            output += "</tbody></table>";
+            document.getElementById("discountPricing").innerHTML = output;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>A5P1 The Rat Store</h1>
+    <p>A place for all your rat needs</p>
+    <p>This months specials:</p>
+    <form>
+        <table border="1" cellspacing="0" cellpadding="6" summary="Table of product images, prices & descriptions">
+            <tbody>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>Please enter your name:<br><input type="text" id="txtName" name="txtName">
+                    </td>
+                </tr>
+                <tr>
+                    <td><img class="prodImg" src="bigRat.jpg" alt="Big Rat" /></td>
+                    <td>
+                        <p class="prodName">$<script>document.write(PRICE_BR)</script> Big Rat </p>
+                        <p>A big furry rodent well suited for a variety of purposes</p>
+                    </td>
+                    <td>Quantity:<br><input type="text" id="txtQ1" name="txtQ1" value="0" /></td>
+                </tr>
+                <tr>
+                    <td><img class="prodImg" src="smallRat.jpg" alt="Small Rat" /></td>
+                    <td>
+                        <p class="prodName">$<script>document.write(PRICE_SR)</script> Small Rat</p>
+                        <p>A small furry rodent for those with a limited budget, has limited use</p>
+                    </td>
+                    <td>Quantity:<br><input type="text" id="txtQ2" name="txtQ2" value="0" /></td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            <input id="btnProcess" type="button" value="Process Order" />
+            <input id="pricingBtn" type="button" value="Bulk Discount Pricing" />
+        </p>
+
+    </form>
+    
+    <div id="receipt">&nbsp;</div>
+    <div id="discountPricing">&nbsp;</div>
+    
+    <script>
+        document.getElementById("btnProcess").addEventListener("click", processOrder);
+        document.getElementById("pricingBtn").addEventListener("click", displayDiscounts);
+    </script>
+</body>
+
+</html>

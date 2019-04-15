@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Joe Student's Buy My Stuff Page</title>
+    <link rel="stylesheet" href="site.css">
+    <link rel="stylesheet" href="form.css">
+    
+    <script>
+    function setSame(){
+               
+        if(document.getElementById('same').checked){
+            // copy billing address to shipping address
+            
+            document.getElementById("sfirstname").value = document.getElementById("bfirstname").value;
+            document.getElementById("slastname").value = document.getElementById("blastname").value;
+            document.getElementById("sstreet1").value = document.getElementById("bstreet1").value;
+            document.getElementById("sstreet2").value = document.getElementById("bstreet2").value;
+            document.getElementById("scity").value = document.getElementById("bcity").value;
+            document.getElementById("sstate").value = document.getElementById("bstate").value;
+            document.getElementById("szip").value = document.getElementById("bzip").value;         
+                        
+        }else{
+            // clear shipping address
+            
+            document.getElementById("sfirstname").value = "";
+            document.getElementById("slastname").value = "";
+            document.getElementById("sstreet1").value = "";
+            document.getElementById("sstreet2").value = "";
+            document.getElementById("scity").value = "";
+            document.getElementById("sstate").value = "";
+            document.getElementById("szip").value = "";      
+        }
+        
+    }
+    
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>Joe Student's "Buy My Stuff Now!" Store</h1>
+        <p><img class="floatright" src="buymystuff.jpg" width="295" height="217" alt="Buy My Stuff Now!"></p>
+    </header>
+    <h2>Billing and Shipping Options</h2>
+    <p>Tell us how to bill and send your stuff!</p>
+
+    <form method="get">
+        <fieldset id="billinginfo">
+            <legend>Billing Info</legend>
+            <p><label for="bfirstname">First Name: </label><input type="text" name="bfirstname" id="bfirstname" class="billingAddress"> &nbsp;
+                <label for="blastname">Last Name: </label><input type="text" name="blastname" id="blastname" class="billingAddress">
+            </p>
+            <p><label for="bstreet1">Street Address Line 1: </label><input type="text" name="bstreet1" id="bstreet1" class="billingAddress">
+            </p>
+            <p><label for="bstreet2">Street Address Line 2: </label><input type="text" name="bstreet2" id="bstreet2" class="billingAddress">
+            </p>
+            <p><label for="bcity">City: </label><input type="text" name="bcity" id="bcity" class="billingAddress">,
+                <label for="bstate">State: </label><input type="text" name="bstate" id="bstate" class="billingAddress">
+                <label for="bzip">Zip: </label><input type="text" name="bzip" id="bzip" class="billingAddress">
+            </p>
+
+            <p><label for="paytype">How are you paying:</label>
+                <select name="paytype" id="paytype">
+                    <option value="">Choose One!</option>
+                    <option value="visa">Visa</option>
+                    <option value="master">MasterCard</option>
+                    <option value="american">American Express</option>
+                    <option value="paypal">Pay Pal</option>
+                </select>
+            </p>
+        </fieldset>
+            
+        
+        <fieldset id="shippinginfo">
+            <legend>Shipping Info</legend>
+            <p id="samep"><input type="checkbox" id="same" name="same" onchange="setSame();">Check to copy billing address fields to shipping address.<br>
+                &nbsp; &nbsp; Uncheck to clear the current shipping address fields.</p>
+            <p><label for="sfirstname">First Name: </label><input type="text" name="sfirstname" id="sfirstname" class="shippingAddress"> &nbsp;
+                <label for="slastname">Last Name: </label><input type="text" name="slastname" id="slastname" class="shippingAddress">
+            </p>
+            <p><label for="sstreet1">Street Address Line 1: </label><input type="text" name="sstreet1" id="sstreet1" class="shippingAddress">
+            </p>
+            <p><label for="sstreet2">Street Address Line 2: </label><input type="text" name="sstreet2" id="sstreet2" class="shippingAddress">
+            </p>
+            <p><label for="scity">City: </label><input type="text" name="scity" id="scity" class="shippingAddress">,
+                <label for="sstate">State: </label><input type="text" name="sstate" id="sstate" class="shippingAddress">
+                <label for="szip">Zip: </label><input type="text" name="szip" id="szip" class="shippingAddress">
+            </p>
+            <p><label for="shiptype">Shipping Options:</label>
+                <select name="shiptype" id="shiptype">
+                    <option value="overnight">Overnight</option>
+                    <option value="nextday">Next Day</option>
+                    <option value="2-day">2-day</option>
+                    <option value="standard" selected>Standard</option>
+                </select>
+            </p>
+            
+        </fieldset>
+        <p><input type="submit" value="Submit Info"></p>
+    </form>
+    <footer>
+        <p>Copyright Joe Student, all rights reserved.</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+/* Styles for form pages */
+
+fieldset {
+    width: 650px;
+    background-color: rgb(95%,93%,92%);
+    margin-bottom: 30px;
+}
+
+legend {
+    font-weight: bold;
+    font-family: Georgia, Times, serif;  
+    color: rgb(180,44,56);
+}
+
+input[type=checkbox] {
+    margin-left: 25px;
+}
+#bstreet1, #bstreet2, #sstreet1, #sstreet2 {
+    width: 30em;
+}
+
+#bfirstname, #sfirstname {
+    width: 10em;
+}
+
+#bcity, #scity {
+    width: 15em;
+}
+
+#bstate, #sstate {
+    width: 3em;
+    margin-right: 2em;
+}
+
+#blastname, #slastname {
+    width: 20em;
+}
+
+#bzip, #szip {
+    width: 8em;
+}
+
+#samep {
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 2em;
+}
+
+#same {
+    margin-left: 0;
+    padding-left: 0;
+}

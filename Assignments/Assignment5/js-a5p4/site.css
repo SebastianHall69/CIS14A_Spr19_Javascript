@@ -1,0 +1,22 @@
+/* Styles for all pages in teh site */
+
+body{
+    background: linear-gradient(90deg, rgb(250, 245, 240) 50%, rgb(200, 189, 180) 80%);
+    margin: 25px 5%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1, h2, h3{
+    font-family: Georgia, Times, serif;
+    color: rgb(180,44,56);
+}
+
+.floatright{
+    float: right;
+    margin-left: 30px;
+}
+
+footer{
+    margin-top: 45px;
+    font-size: 90%;
+}
