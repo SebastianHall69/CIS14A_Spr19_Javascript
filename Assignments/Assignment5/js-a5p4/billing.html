@@ -3,12 +3,25 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Joe Student's Buy My Stuff Now!</title>
+    <title>Sebastian Hall's Buy My Stuff Now!</title>
     <link rel="stylesheet" href="site.css">
     <link rel="stylesheet" href="form.css">
     
     <script>
-        // Write your code to react to the checkbox for shipping/billing addressses here
+        function copy() {
+            //Declare variables
+            var bAddr = document.getElementsByClassName("billingAddress");
+            var sAddr = document.getElementsByClassName("shippingAddress");
+            var cBox = document.getElementById("same");
+            
+            //Set values in shipping address area
+            if(cBox.checked)
+                for(var i = 0; i < bAddr.length; ++i)
+                    sAddr[i].value = bAddr[i].value;
+            else
+                for(var i = 0; i < sAddr.length; ++i)
+                    sAddr[i].value = "";
+        }
         
         
     </script>
@@ -16,7 +29,7 @@
 
 <body>
     <header>
-        <h1>Joe Student's "Buy My Stuff Now!" Store</h1>
+        <h1>Sebastian Hall's "Buy My Stuff Now!" Store</h1>
         <p><img class="floatright" src="buymystuff.jpg" width="295" height="217" alt="Buy My Stuff Now!"></p>
     </header>
     <h2>Billing and Shipping Options</h2>
@@ -52,7 +65,7 @@
         <fieldset id="shippinginfo">
             <legend>Shipping Info</legend>
             
-            <p id="samep"><input type="checkbox" id="same" name="same">
+            <p id="samep"><input type="checkbox" id="same" name="same" onclick="copy();">
                 Check to copy billing address fields to shipping address.<br> &nbsp; &nbsp; 
                 Uncheck to clear the current shipping address fields.
             </p>
@@ -81,7 +94,7 @@
         <p><input type="submit" value="Submit Info"></p>
     </form>
     <footer>
-        <p>Copyright Joe Student, all rights reserved.</p>
+        <p>Copyright Sebastian Hall, all rights reserved.</p>
     </footer>
 </body>
 
