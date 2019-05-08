@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>A6P1 by Sebastian Hall</title>
+    <title>A6P4 by Sebastian Hall</title>
     <style>
         body {
             background-color:lightcyan;
@@ -45,7 +45,8 @@
         
         function processOrder() {
             //Declare variables
-            var fName = document.getElementById("txtName").value;
+            var name = document.getElementById("txtName").value;
+            var fName = /\w+/.exec(name);
             var q1 = document.getElementById("txtQ1").value;
             var q2 = document.getElementById("txtQ2").value;
             var disc = getDiscount(q1);
@@ -57,6 +58,7 @@
             var total = subtotal + tax + shipCost;
             var d = new Date();
             var date = d.getMonth() + "/" + d.getDate() + "/" + d.getFullYear();
+            var payOpt = document.getElementById("payOpt").value;
             var output = "";
             
             if(validate()) {
@@ -75,7 +77,9 @@
                 output += "<p>Tax: $" + tax.toFixed(2) + "</p>";
                 output += "<p>Shipping: $" + shipCost.toFixed(2) + "</p>";
                 output += "<p>Total Balance: $" + total.toFixed(2) + "</p>";
+                output += "<p>Thank you for paying with " + payOpt + "</p>";
                 output += "<p>" + date + "</p>";
+                
                 document.getElementById("receipt").style.color = "black";
                 document.getElementById("receipt").style.fontWeight = "normal";
             } else {
@@ -91,12 +95,35 @@
         function validate() {
             var arr = document.getElementsByClassName("req");
             var isValid = true;
+            var accNum = document.getElementById("accNum").value;
+            accNum = accNum.toUpperCase();
+            var badAcc = false;
+            
+            //Validate all required fields
             for(var i = 0; i < arr.length; ++i) 
                 if(isNaN(arr[i].value) || arr[i].value == "") {
                     isValid = false;
                     arr[i].value = "REQUIRED";
                     arr[i].select();
                 }
+            //Validate account number
+            var regex = /^[a-zA-Z]{2}-\d{4}$/;
+            badAcc = !accNum.match(regex);
+            if(badAcc) {
+                var elem = document.getElementById("accNum");
+                elem.style.color = "red";
+                elem.style.fontWeight = "bold";
+                elem.focus();
+                elem.select();
+                document.getElementById("accErr").innerHTML = 'Use "AA-1243" Format';
+                isValid = false;
+            } else {
+                var elem = document.getElementById("accNum");
+                elem.style.color = "black";
+                elem.style.fontWeight = "normal";
+                document.getElementById("accErr").innerHTML = "";
+            }
+            
             return isValid;
         }
         
@@ -131,7 +158,7 @@
 </head>
 
 <body>
-    <h1>A6P1 The Rat Store</h1>
+    <h1>A6P4 The Rat Store</h1>
     <p>A place for all your rat needs</p>
     <p>This months specials:</p>
     <form>
@@ -140,7 +167,7 @@
                 <tr>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
-                    <td>Please enter your name:<br><input type="text" id="txtName" name="txtName">
+                    <td>Please enter your full name:<br><input type="text" id="txtName" name="txtName">
                     </td>
                 </tr>
                 <tr>
@@ -169,7 +196,21 @@
             <input class="shipOpt" id="2dayship" type="radio" name="shipping" value="5" />
             <label for="2dayship">2-Day Shipping ($5)</label><br/>
             <input class="shipOpt" id="nightship" type="radio" name="shipping" value="10" />
-            <label for="nightship">Overnight Shipping ($10)</label><br/>
+            <label for="nightship">Overnight Shipping ($10)</label><br/><br/>
+            
+            <select id="payOpt">
+                <option value="Visa Credit">Visa Credit</option>
+                <option value="MasterCard Credit">MasterCard Credit</option>
+                <option value="American Express Credit">American Express Credit</option>
+                <option value="Debit Credit">Debit Credit</option>
+                <option value="Pay Pal">Pay Pal</option>
+            </select>
+            <br/><br/>
+            
+            <label for="accNum">Account Number</label><br/>
+            <input type="text" id="accNum" placeholder="AA-1234"/>
+            <span id="accErr"></span>
+            <br/><br/>
             
             <input id="btnProcess" type="button" value="Process Order" />
             <input id="pricingBtn" type="button" value="Bulk Discount Pricing" />

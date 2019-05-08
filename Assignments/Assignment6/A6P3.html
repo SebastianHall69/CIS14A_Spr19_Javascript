@@ -45,7 +45,10 @@
         
         function processOrder() {
             //Declare variables
-            var fName = document.getElementById("txtName").value;
+            var name = document.getElementById("txtName").value;
+            name.trim();
+            name = name.split(" ");
+            var fName = name[0];
             var q1 = document.getElementById("txtQ1").value;
             var q2 = document.getElementById("txtQ2").value;
             var disc = getDiscount(q1);
@@ -93,12 +96,49 @@
         function validate() {
             var arr = document.getElementsByClassName("req");
             var isValid = true;
+            var accNum = document.getElementById("accNum").value;
+            accNum = accNum.toUpperCase();
+            var badAcc = false;
+            
+            //Validate all required fields
             for(var i = 0; i < arr.length; ++i) 
                 if(isNaN(arr[i].value) || arr[i].value == "") {
                     isValid = false;
                     arr[i].value = "REQUIRED";
                     arr[i].select();
                 }
+            //Validate account number
+            if(accNum.length != 7) {
+                badAcc = true;
+            }
+            for(var i = 0; i < 2; ++i){
+                if(accNum[i] < 'A' || accNum[i] > 'Z'){
+                    badAcc = true;
+                }
+           }
+            if(accNum[2] != '-') {
+                badAcc = true;
+            }
+            for(var i = 3; i < accNum.length; ++i) {
+                if(accNum[i] < '0' || accNum[i] > '9') {
+                    badAcc = true;
+                }
+            }
+            if(badAcc) {
+                var elem = document.getElementById("accNum");
+                elem.style.color = "red";
+                elem.style.fontWeight = "bold";
+                elem.focus();
+                elem.select();
+                document.getElementById("accErr").innerHTML = 'Use "AA-1243" Format';
+                isValid = false;
+            } else {
+                var elem = document.getElementById("accNum");
+                elem.style.color = "black";
+                elem.style.fontWeight = "normal";
+                document.getElementById("accErr").innerHTML = "";
+            }
+            
             return isValid;
         }
         
@@ -142,7 +182,7 @@
                 <tr>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
-                    <td>Please enter your name:<br><input type="text" id="txtName" name="txtName">
+                    <td>Please enter your full name:<br><input type="text" id="txtName" name="txtName">
                     </td>
                 </tr>
                 <tr>
@@ -180,6 +220,11 @@
                 <option value="Debit Credit">Debit Credit</option>
                 <option value="Pay Pal">Pay Pal</option>
             </select>
+            <br/><br/>
+            
+            <label for="accNum">Account Number</label><br/>
+            <input type="text" id="accNum" placeholder="AA-1234"/>
+            <span id="accErr"></span>
             <br/><br/>
             
             <input id="btnProcess" type="button" value="Process Order" />
