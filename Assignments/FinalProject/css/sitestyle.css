@@ -1,0 +1,286 @@
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #c5d5c5;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #e3e0cc;
+    margin: 0;
+}
+
+header img {
+    width: 100%;
+    height: 10vw;
+    margin: 0;
+    padding: 0;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav {
+    float: left;
+    position: sticky;
+    top: 0;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td,
+th {
+    font-size: 0.84vw; /* 16px */
+    border: 3px solid black;
+    padding: 0.42vw;/* 8px */
+}
+
+iframe {
+    height: 39.81vh;
+    width: 15.63vw;
+    border: 0.21vw solid black;/* 4px */
+    border-style: ridge;
+}
+
+legend {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+caption {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+h5 {
+    font-size: 0.9em;
+}
+
+input, 
+select {
+    margin-top: 0;
+    margin-bottom: 0.42vw;
+}
+
+input[type="submit"], [type="button"],
+select {
+    background-image: linear-gradient(#9fa9a3, #454140);
+    color: white;
+}
+
+input[type="text"], [type="password"], [type="number"], 
+select {
+    border: 0.105vw solid #e3e0cc;/* 2px */
+    border-radius: 0.3vw;
+    width: 10.417vw;/* 200px */
+}
+
+fieldset input[type="submit"] {
+    width: 10.417vw;/* 200px */
+}
+
+fieldset {
+    border-radius: 10px;
+}
+
+option {
+    color: black;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+nav ul {
+    background-color: #92a8d1;
+    border-bottom-right-radius: 10px;
+}
+
+nav ul li a, nav ul li p {
+    display: block;
+    width: 10vw;
+    text-decoration: none;
+    color: black;
+    padding: 1vw;/* 8px */
+}
+
+div li a {
+    display: inline-block;
+    width: 5vw;
+    text-decoration: none;
+    background-color: #36486b;
+    color: white;
+}
+
+div li {
+    display: inline;
+}
+
+li p {
+    margin: 0;
+}
+
+li a:hover {
+    background-color: #f7786b;
+}
+
+li a:active {
+    background-color: #36486b;
+    color: white;
+}
+
+div#loginArea {
+    position: fixed;
+    top: 25vh;
+    left: 40vw;background-color: #f0f0f0;
+    padding: 2vh;
+    border: 2px solid #e3e0cc;
+    border-radius: 10px;
+}
+
+div#signUpForm {
+    display: none;
+    text-align: left;
+}
+
+div#loginForm {
+    text-align: left;
+    display: none;
+}
+
+#updateProd {
+    float: right;
+    position: sticky;
+    top: 0;
+}
+
+#reload {
+    width: 30%;
+    position: relative;
+    left: 10.417vw;/* 200px */
+}
+
+#deleteForm {
+    position: relative;
+    bottom: 0;
+}
+
+div#catSelector {
+    margin: 0;
+    padding: 0;
+    display: block;
+    min-height: 10vh;
+    background-color: #36486b;
+    position: sticky;
+    top: 0;
+}
+div#catSelector h1 {
+    margin: 0;
+    padding: 0;
+}
+
+#checkout {
+    width:100%;
+    height:5vh;
+    border-radius: 50px;
+    font-size: 2em;
+    margin-top: 1vh;
+}
+
+.main {
+    width: 60vw;
+    min-height: 80vh;
+    margin: 0 auto;
+    background-color: #f0f0f0;
+    padding: 0.729vw;
+    padding-top: 0;
+    border: 5px ridge black;
+}
+
+.err {
+    color: red; font-size: 0.75em;
+}
+
+.noBorder {
+    border: none;
+}
+
+.center {
+    text-align: center;
+}
+
+.white {
+    color: white;
+}
+
+.product {
+    border: 2px solid #454140;
+    border-radius: 10px;
+    overflow: auto;
+    margin: 1em;
+    padding: 1em;
+}
+
+.prodImg {
+    background-color: red;
+    width: 10vw;
+    float: left;
+}
+
+.checkoutImg {
+    background-color: red;
+    width: 5vw;
+    float: left;
+}
+
+.prodInfo {
+    float: right;
+    width: 75%;
+    overflow: auto;
+}
+
+.prodInput {
+    float: right;
+    width: 30%;
+    text-align: center;
+    overflow: auto;
+}
+
+.userInfo {
+    float: right;
+    background-color: #454140;
+    color: white;
+    border-radius: 5px;
+    margin: 1vw;
+    padding: 1vw;
+    min-width: 10vw;
+    text-align: center;
+    vertical-align: center;
+    position: sticky;
+    top: 0;
+}
+
+.cool {
+    background-color: #454140;
+    color: white;
+    border-radius: 30px;
+    margin: 0;
+    padding: 2vw;
+}
